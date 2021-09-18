@@ -6,6 +6,7 @@ import { createMemoryHistory } from 'history'
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import userEvent from '@testing-library/user-event'
 import "@testing-library/jest-dom";
+import cypress from "cypress";
 
 jest.mock('axios')
 
@@ -214,4 +215,5 @@ describe("Pizza test, sprint 3 challenge", () => {
     expect(axios.post).toBeCalledWith('https://reqres.in/api/orders', testOrder)
 
   });
+ 
 });

@@ -5,7 +5,7 @@ import OrderPizza from './order-pizza';
 import schema from './formSchema';
 import * as yup from 'yup';
 import Pizza from './Pizza'
-
+import axios from 'axios'
 // const { url } = useRouteMatch();
 
 const initialFormValues = {
@@ -47,9 +47,13 @@ const [formErrors, setFormErrors] = useState(initialFormErrors)
 const [disabled, setDisabled] = useState(initialDisabled)
 
 const postNewPizza = newPizza => {
-  setPizzas([newPizza,...pizzas]);
-  setFormValues(initialFormValues);
+  axios.post('https://reqres.in/api/orders', newPizza)
+  .then(res => {
+    setPizzas([res.data, ...pizzas])
+    setFormValues(initialFormValues);
+  }).catch(err => {console.error(err)})
 }
+
 const inputChange = (name,value) => {
   yup.reach(schema,name)
   .validate(value)

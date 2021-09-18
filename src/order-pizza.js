@@ -18,12 +18,11 @@ const OrderPizza = (props) => {
         const { name, value, checked, type } = evt.target;
         const valueToUse = type === 'checkbox' ? checked : value;
         change(name, valueToUse);
-        console.log(values)
       }
     return(
         <form className='form container' id='pizza-form' onSubmit={onSubmit}>
         <div className='form-group inputs'>
-        <div>
+        
             <h1>Pizza Maker</h1>
             <h2>Contact Information</h2>
             <label>Name:
@@ -179,8 +178,8 @@ const OrderPizza = (props) => {
             </label>
 
             
-        </div>
-        <button id='order-button' disabled={disabled}>Order!</button>
+        
+        <button id='order-button' disabled={disabled}>Submit</button>
         </div>
         </form>
     )
